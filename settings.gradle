@@ -1,0 +1,6 @@
+rootProject.name = "weather_bot"
+
+include ':commons'
+include ':bot-messages-service'
+include ':bot-weather-service'
+include ':tg-starter'

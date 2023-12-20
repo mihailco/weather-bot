@@ -1,0 +1,36 @@
+server:
+  port: 8081
+
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgrespw
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+  liquibase:
+    change-log: classpath:liquibase/changelog.yml
+
+
+
+spring.kafka:
+  bootstrap-servers: 127.0.0.1:39092, 127.0.0.1:29092
+  consumer:
+    key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
+    value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    properties:
+      spring.json.trusted.packages: "*"
+  producer:
+    key-serializer: org.apache.kafka.common.serialization.LongSerializer
+    value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+weather:
+  openweathermap:
+    api-key: d68292891fafb2a9ce37d00a676075cb
+#    api-key: ${APIKEY}
